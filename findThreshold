@@ -1,3 +1,12 @@
+""" Monitors the partitions on a linux server
+and notifies if the partition usage is beyond the set threshold """
+import subprocess
+partition_usage_threshold = 5
+df_cmd = subprocess.check_output(['df','-k'])
+print df_cmd
+# split the output into a list called lines
+lines = df_cmd.splitlines()
+print lines
 for line in lines[1:]:
         columns = line.split()
         used_percentage = columns[4]
